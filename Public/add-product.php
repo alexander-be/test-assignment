@@ -1,21 +1,16 @@
 <?php
 require 'templates/header.php'; 
-
-// Need to ==================
-//complete adding to $database
-//validate entry
-//switch product type divs
-//===========================
 ?>
 
 
 <header>
         <h2>Product List</h2>
         <div class="btn">
-            <input type="submit" name="submit-new-post" value="SAVE">
+            <input type="submit" name="add-product" value="SAVE">
             <a href="index.php"><button id="delete-btn">CANCEL</button></a>
         </div>
 </header>
+
 <form action="" method="post">
     <div class="product">
         <span>
@@ -44,13 +39,13 @@ require 'templates/header.php';
     <div class="product_dvd hidden">
         <label for="size">Size (MB)</label>
         <input type="text" name="size" id="size" value=""><br>
-        *Product description*
+        <p><strong>Please provide capacity of the item in megabytes</strong></p>
     </div>
 
     <div class="product_book hidden">
         <label for="weight">Weight (KG)</label>
         <input type="text" name="weight" id="weight" value=""><br>
-        *Product description*
+        <p><strong>Please provide weight of the item in kilograms</strong></p>
     </div>
         
     <div class="product_furniture hidden">
@@ -60,10 +55,8 @@ require 'templates/header.php';
             <input type="text" name="width" id="width" value="">
             <label for="length">Length (CM)</label>
             <input type="text" name="length" id="length" value="">
-        *Please provide dimensions in HxWxL*
-        *Product description*
+            <p><strong>Please provide dimensions in HxWxL</strong></p>
     </div>
-
 </form>
 
 <?php require 'templates/footer.php'; ?>

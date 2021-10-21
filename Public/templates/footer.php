@@ -1,7 +1,6 @@
 <footer>
         Scandiweb Test assignment
-    </footer>
-
-    <script src="script.js"></script>
+</footer>
+<script src="js/script.js"></script>
 </body>
 </html>

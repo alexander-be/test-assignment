@@ -46,18 +46,16 @@ footer {
 }
 .product span {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-between;
   margin-bottom: 25px;
 }
 .product_type {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   width: 200px;
-  flex-wrap: nowrap;
-  flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 25px;
 }
 .product_dvd.hidden, .product_book.hidden, .product_furniture.hidden {
   display: none;
