@@ -11,13 +11,13 @@
         <h2>Product List</h2>
         <div class="btn">
             <a href="add-product.php"><button id="add-product-btn">ADD</button></a>
-            <a href=""><button id="delete-product-btn">MASS DELETE</button></a>
+            <a href=""><button id="delete-product-btn" onclick="addEmassDelete()">MASS DELETE</button></a>
         </div>
     </header>
 
     <ul class="product_list">
         <?php foreach ( $products as $product ) : ?>
-            <li class="product_item">
+            <li class="product_item" id="product_item">
                 <input type="checkbox" class="delete-checkbox">
                 <div class="product_item_content">
                     <?php if ( $product['type'] === 'disc' ) : ?>
