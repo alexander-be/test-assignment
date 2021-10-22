@@ -27,4 +27,10 @@ function selectType() {
             dvdForm.add('hidden');
             break;
     }
-}
+};
+
+let checked = document.querySelectorAll('#product_item input:checked');
+
+function massDelete() {
+
+};
