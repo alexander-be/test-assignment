@@ -1,14 +1,9 @@
 <?php 
+require '../Private/init.php';
 
-define( 'DB_HOST', 'localhost');
-define( 'DB_USER', 'root');
-define( 'DB_PASSWORD', 'root');
-define( 'DB_DATABASE', 'assignment' );
-define( 'DB_PORT', '8889' );
 
 function add_product ( $sku, $name, $type, $price ) {
-    
-    $database = mysqli_connect( DB_HOST,DB_USER,DB_PASSWORD,DB_DATABASE,DB_PORT );
+    global $database;
     $query = "INSERT INTO products ( sku, name, type, price ) VALUES ( '$sku', '$name', '$type', '$price' )";
     mysqli_query( $database, $query);
 
