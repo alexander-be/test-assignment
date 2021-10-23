@@ -63,10 +63,10 @@ footer {
                 justify-content: space-between;
                 margin-bottom: 25px;
             }
-                &_dvd.hidden, &_book.hidden, &_furniture.hidden{
+                &_disc.hidden, &_book.hidden, &_furniture.hidden{
                     display: none;
                 }
-                    &_dvd, &_book, &_furniture{
+                    &_disc, &_book, &_furniture{
                         display: flex;
                         flex-flow: row wrap;
                         width: 270px;

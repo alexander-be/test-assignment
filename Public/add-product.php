@@ -49,7 +49,7 @@ if ( isset( $_POST['add-product'] ) ) {
         </select>
     </div>
 
-    <div class="product_dvd hidden">
+    <div class="product_disc hidden">
         <label for="size">Size (MB)</label>
         <input type="text" name="size" id="size" value=""><br>
         <p><strong>Please provide capacity of the item in megabytes</strong></p>

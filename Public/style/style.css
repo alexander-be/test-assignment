@@ -57,10 +57,10 @@ footer {
   justify-content: space-between;
   margin-bottom: 25px;
 }
-.product_dvd.hidden, .product_book.hidden, .product_furniture.hidden {
+.product_disc.hidden, .product_book.hidden, .product_furniture.hidden {
   display: none;
 }
-.product_dvd, .product_book, .product_furniture {
+.product_disc, .product_book, .product_furniture {
   display: flex;
   flex-flow: row wrap;
   width: 270px;
