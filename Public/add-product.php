@@ -1,7 +1,7 @@
 <?php
 require 'templates/header.php'; 
 require 'functions.php';
-//drop value for unselected type
+
 
 if ( isset( $_POST['add-product'] ) ) {
 
@@ -12,20 +12,20 @@ if ( isset( $_POST['add-product'] ) ) {
     
     return add_product( $sku, $name, $type, $price);
 }
-
 ?>
 
 
-<header>
-        <h2>Product List</h2>
-        <div class="btn">
-            
-            <a href="index.php"><button id="delete-btn">CANCEL</button></a>
-        </div>
-</header>
+
 
 <form action="" method="post">
-     <input type="submit" name="add-product" value="SAVE">
+    <header>
+        <h2>Product List</h2>
+        <div class="btn">
+            <input type="submit" name="add-product" value="SAVE">
+            <a href="index.php"><button id="delete-btn">CANCEL</button></a>
+        </div>
+    </header>
+    
     <div class="product">
         <span>
             <label for="sku">SKU</label>
@@ -71,7 +71,6 @@ if ( isset( $_POST['add-product'] ) ) {
             <input type="text" name="length" id="length" value="">
             <p><strong>Please provide dimensions in HxWxL</strong></p>
     </div>
-   
 </form>
 
 <?php require 'templates/footer.php'; ?>
