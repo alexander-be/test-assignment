@@ -26,3 +26,9 @@ function add_product ( $sku, $name, $type, $price ) {
     header('Location:http://localhost:8888/SCANDIWEB/Public/index.php');
     die();
 }
+
+function mass_delete() {
+    global $database;
+
+    
+}
