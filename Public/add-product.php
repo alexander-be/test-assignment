@@ -15,16 +15,15 @@ if ( isset( $_POST['add-product'] ) ) {
 ?>
 
 
+<header>
+    <h2>Product List</h2>
+    <div class="btn">
+        <input type="submit" form="product-add-form" name="add-product" value="SAVE">
+        <a href="index.php"><button id="delete-btn">CANCEL</button></a>
+    </div>
+</header>
 
-
-<form action="" method="post">
-    <header>
-        <h2>Product List</h2>
-        <div class="btn">
-            <input type="submit" name="add-product" value="SAVE">
-            <a href="index.php"><button id="delete-btn">CANCEL</button></a>
-        </div>
-    </header>
+<form action="" method="post" id="product-add-form">
     
     <div class="product">
         <span>
