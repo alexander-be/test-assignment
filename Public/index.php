@@ -13,7 +13,7 @@
             mysqli_query( $database,$deleteItems );
             }
             header('Location:http://localhost:8888/SCANDIWEB/Public/index.php');
-            die();
+            exit();
             
     }
     

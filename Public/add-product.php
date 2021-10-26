@@ -1,30 +1,31 @@
 <?php
-require 'templates/header.php'; 
-require 'functions.php';
-
+require 'templates/header.php';
+require '../Private/init.php';
+require '../src/Database.php';
+require '../src/Product.php';
 
 if ( isset( $_POST['add-product'] ) ) {
 
-    $sku = $_POST['sku'];
-    $name = $_POST['name'];
-    $type = $_POST['type'];
-    $price = $_POST['price'];
-    
-    return add_product( $sku, $name, $type, $price);
+    $product = new Product();
+    $product->setType($_POST['type']);
+    $product->setName($_POST['name']);
+    $product->setPrice($_POST['price']);
+    $product->setSku($_POST['sku']);
+    header('Location:http://localhost:8888/SCANDIWEB/Public/index.php');
+    return (new Database())->addProduct($product);
 }
+
 ?>
 
-
 <header>
-    <h2>Product List</h2>
-    <div class="btn">
-        <input type="submit" form="product-add-form" name="add-product" value="SAVE">
-        <a href="index.php"><button id="delete-btn">CANCEL</button></a>
-    </div>
+        <h2>Product List</h2>
+        <div class="btn">
+            <input type="submit" name="add-product" form="product-form" value="SAVE">
+            <a href="index.php"><button id="delete-btn">CANCEL</button></a>
+        </div>
 </header>
 
-<form action="" method="post" id="product-add-form">
-    
+<form action="" method="post" id="product-form">
     <div class="product">
         <span>
             <label for="sku">SKU</label>
