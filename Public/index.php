@@ -2,23 +2,27 @@
     
     require '../Private/init.php';
     require 'templates/header.php';
+    require '../src/ProductConverter.php';
 
     $result = mysqli_query( $database, "SELECT * FROM products" );
-    $products = mysqli_fetch_all( $result, MYSQLI_ASSOC );
+    $result = mysqli_fetch_all( $result, MYSQLI_ASSOC );
+    $products = [];
+    $converter = new ProductConverter();
+    foreach ($result as $item) {
+        $products[] = $converter->create($item);
+    }
+
 
     if( isset( $_POST['check'] ) ){
         $checkedItems = $_POST['check'];
             foreach ( $checkedItems as $checkedIdList ){
-            $deleteItems = "DELETE from products WHERE id=".$checkedIdList;
-            mysqli_query( $database,$deleteItems );
+                $deleteItems = "DELETE from products WHERE id=".$checkedIdList;
+                mysqli_query( $database,$deleteItems );
             }
-            header('Location:http://localhost:8888/SCANDIWEB/Public/index.php');
+            header('Location:http://localhost:8888/SCANDIWEB/Public/');
             exit();
             
     }
-    
-
-
 ?> 
 
 <header>
@@ -33,26 +37,12 @@
     <ul class="product_list">
         <?php foreach ( $products as $product ) : ?>
             <li class="product_item" id="product_item">
-                <input type="checkbox" name="check[]" class="delete-checkbox" value="<?php echo $product['id']; ?>">
+                <input type="checkbox" name="check[]" class="delete-checkbox" value="<?php echo $product->getId(); ?>">
                 <div class="product_item_content">
-                    <?php if ( $product['type'] === 'disc' ) : ?>
-                        <span id="sku"><?php echo $product['sku']; ?></span>
-                        <span id="name"><?php echo $product['name']; ?></span>
-                        <span id="price"><?php echo $product['price'] . ' $'; ?></span>
-                        <span id="size"><?php echo 'Size: ' . $product['size'] . ' MB'; ?></span>
-                    <?php endif; ?>
-                    <?php if ( $product['type'] === 'book' ) : ?>
-                        <span id="sku"><?php echo $product['sku']; ?></span>
-                        <span id="name"><?php echo $product['name']; ?></span>
-                        <span id="price"><?php echo $product['price'] . ' $'; ?></span>
-                        <span id="size"><?php echo 'Weight: ' . $product['weight'] . 'KG'; ?></span>
-                    <?php endif; ?>
-                    <?php if ( $product['type'] === 'furniture' ) : ?>
-                        <span id="sku"><?php echo $product['sku']; ?></span>
-                        <span id="name"><?php echo $product['name']; ?></span>
-                        <span id="price"><?php echo $product['price'] . ' $'; ?></span>
-                        <span id="size"><?php echo 'Dimensions: ' . $product['height'] . 'x' . $product['width'] . 'x' . $product['length'];?></span>
-                    <?php endif; ?>
+                    <span id="sku"><?php echo $product->getSku(); ?></span>
+                    <span id="name"><?php echo $product->getName(); ?></span>
+                    <span id="price"><?php echo $product->getPrice() . ' $'; ?></span>
+                    <?php echo $product->showIndividualData() ?>
                 </div>
             </li>
         <?php endforeach; ?>

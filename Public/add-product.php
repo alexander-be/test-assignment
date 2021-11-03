@@ -11,18 +11,23 @@ if ( isset( $_POST['add-product'] ) ) {
     $product->setName($_POST['name']);
     $product->setPrice($_POST['price']);
     $product->setSku($_POST['sku']);
-    header('Location:http://localhost:8888/SCANDIWEB/Public/index.php');
+    $product->setSize($_POST['size']);
+    $product->setWeight($_POST['weight']);
+    $product->setHeight($_POST['height']);
+    $product->setWidth($_POST['width']);
+    $product->setLength($_POST['length']);
+    header('Location:http://localhost:8888/SCANDIWEB/Public/');
     return (new Database())->addProduct($product);
 }
 
 ?>
 
 <header>
-        <h2>Product List</h2>
-        <div class="btn">
-            <input type="submit" name="add-product" form="product-form" value="SAVE">
-            <a href="index.php"><button id="delete-btn">CANCEL</button></a>
-        </div>
+    <h2>Product List</h2>
+    <div class="btn">
+        <input type="submit" name="add-product" form="product-form" value="SAVE">
+        <a href="index.php"><button id="delete-btn">CANCEL</button></a>
+    </div>
 </header>
 
 <form action="" method="post" id="product-form">
@@ -61,15 +66,15 @@ if ( isset( $_POST['add-product'] ) ) {
         <input type="text" name="weight" id="weight" value=""><br>
         <p><strong>Please provide weight of the item in kilograms</strong></p>
     </div>
-        
+
     <div class="product_furniture hidden">
-            <label for="height">Height (CM)</label>
-            <input type="text" name="height" id="height" value="">
-            <label for="width">Width (CM)</label>
-            <input type="text" name="width" id="width" value="">
-            <label for="length">Length (CM)</label>
-            <input type="text" name="length" id="length" value="">
-            <p><strong>Please provide dimensions in HxWxL</strong></p>
+        <label for="height">Height (CM)</label>
+        <input type="text" name="height" id="height" value="">
+        <label for="width">Width (CM)</label>
+        <input type="text" name="width" id="width" value="">
+        <label for="length">Length (CM)</label>
+        <input type="text" name="length" id="length" value="">
+        <p><strong>Please provide dimensions in HxWxL</strong></p>
     </div>
 </form>
 
