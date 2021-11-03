@@ -6,6 +6,11 @@ class Product
     private $name;
     private $price;
     private $type;
+    private $size = 'null';
+    private $weight = 'null';
+    private $height = 'null';
+    private $width = 'null';
+    private $length = 'null';
 
     /**
      * @return mixed
@@ -69,5 +74,67 @@ class Product
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    public function setSize($size)
+    {
+        if (!empty($size)) {
+            $this->size = $size;
+        }
+
+    }
+
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    public function setWeight($weight)
+    {
+        if (!empty($weight)) {
+            $this->weight = $weight;
+        }
+    }
+
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    public function setHeight($height)
+    {
+        if (!empty($height)) {
+            $this->height = $height;
+        }
+    }
+
+    public function getLength()
+    {
+        return $this->length;
+    }
+
+    public function setLength($length)
+    {
+        if (!empty($length)) {
+            $this->length = $length;
+        }
+    }
+
+
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    public function setWidth($width)
+    {
+        if (!empty($width)) {
+            $this->width = $width;
+        }
     }
 }

@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-class Database 
+class Database
 {
     public function addProduct(Product $product)
     {
@@ -10,21 +10,20 @@ class Database
         $sku = $product->getSku();
         $type = $product->getType();
         $price = $product->getPrice();
-        
+        $size = $product->getSize();
+        $weight = $product->getWeight();
+        $height = $product->getHeight();
+        $width = $product->getWidth();
+        $length = $product->getLength();
+
         $query = "INSERT INTO products (sku, name, type, price) VALUES ( '$sku', '$name', '$type', '$price' )";
         $result = mysqli_query( $database, $query);
 
-        $size = $_POST['size'];
-        $weight = $_POST['weight'];
-        $height = $_POST['height'];
-        $width = $_POST['width'];
-        $length = $_POST['length'];
-
-
-        $disc = 'UPDATE "products" SET "size" = "$size" WHERE "sku" = "$sku"';
-        $book = 'UPDATE "products" SET "weight" = "$weight" WHERE "sku" = "$sku"';
-        $furniture = 'UPDATE "products" SET "height" = "$height", "width" = "$width","length" = "$length" WHERE "sku" = "$sku"';
-
-        return mysqli_query( $database, $$type );
+        if ( ! $result ) {
+            exit( mysqli_error( $database ) );
+        } else {
+            $addCustom = "UPDATE products SET size = $size, height = $height, weight = $weight, length = $length, width = $width, length = $length WHERE sku = '$sku'";
+            return mysqli_query( $database, $addCustom );
+        }
     }
 }
