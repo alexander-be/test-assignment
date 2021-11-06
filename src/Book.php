@@ -6,6 +6,6 @@ class Book extends AbstractProduct
 {
     public function showUniqueValues()
     {
-        return '<span id="size">Weight: ' . $this->getWeight() . 'KG</span>';
+        return '<span id="size">Weight: ' . $this->getWeight() . ' KG</span>';
     }
 }

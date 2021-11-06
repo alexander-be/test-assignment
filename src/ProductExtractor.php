@@ -4,7 +4,7 @@ require 'Disc.php';
 require 'Book.php';
 require 'Furniture.php';
 
-class ProductConverter
+class ProductExtractor
 {
     public function create(array $productArray)
     {

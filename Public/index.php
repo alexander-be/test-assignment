@@ -2,12 +2,12 @@
     
     require '../Private/init.php';
     require 'templates/header.php';
-    require '../src/ProductConverter.php';
+    require '../src/ProductExtractor.php';
 
     $result = mysqli_query( $database, "SELECT * FROM products" );
     $result = mysqli_fetch_all( $result, MYSQLI_ASSOC );
     $products = [];
-    $converter = new ProductConverter();
+    $converter = new ProductExtractor();
     foreach ($result as $item) {
         $products[] = $converter->create($item);
     }
