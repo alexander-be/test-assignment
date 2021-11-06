@@ -1,27 +1,10 @@
 <?php
 
+require_once 'AbstractProduct.php';
 
 class Book extends AbstractProduct
 {
-    private $weight;
-
-    /**
-     * @return mixed
-     */
-    public function getWeight()
-    {
-        return $this->weight;
-    }
-
-    /**
-     * @param mixed $weight
-     */
-    public function setWeight($weight)
-    {
-        $this->weight = $weight;
-    }
-
-    public function showIndividualData()
+    public function showUniqueValues()
     {
         return '<span id="size">Weight: ' . $this->getWeight() . 'KG</span>';
     }

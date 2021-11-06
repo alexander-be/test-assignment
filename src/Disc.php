@@ -1,28 +1,10 @@
 <?php
 
-require 'AbstractProduct.php';
+require_once 'AbstractProduct.php';
 
 class Disc extends AbstractProduct
 {
-    private $size;
-
-    /**
-     * @return mixed
-     */
-    public function getSize()
-    {
-        return $this->size;
-    }
-
-    /**
-     * @param mixed $size
-     */
-    public function setSize($size)
-    {
-        $this->size = $size;
-    }
-
-    public function showIndividualData()
+    public function showUniqueValues()
     {
         return '<span id="size">Size: '.$this->getSize().' MB</span>';
     }

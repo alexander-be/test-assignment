@@ -12,7 +12,6 @@
         $products[] = $converter->create($item);
     }
 
-
     if( isset( $_POST['check'] ) ){
         $checkedItems = $_POST['check'];
             foreach ( $checkedItems as $checkedIdList ){
@@ -42,7 +41,7 @@
                     <span id="sku"><?php echo $product->getSku(); ?></span>
                     <span id="name"><?php echo $product->getName(); ?></span>
                     <span id="price"><?php echo $product->getPrice() . ' $'; ?></span>
-                    <?php echo $product->showIndividualData() ?>
+                    <?php echo $product->showUniqueValues() ?>
                 </div>
             </li>
         <?php endforeach; ?>

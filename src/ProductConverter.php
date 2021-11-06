@@ -8,18 +8,12 @@ class ProductConverter
 {
     public function create(array $productArray)
     {
-        if ($productArray['type'] === 'disc') {
-            $product = new Disc();
-            $product->setSize($productArray['size']);
-        } elseif ($productArray['type'] === 'book') {
-            $product = new Book();
-            $product->setWeight($productArray['weight']);
-        } elseif ($productArray['type'] === 'furniture') {
-            $product = new Furniture();
-            $product->setHeight($productArray['height']);
-            $product->setWidth($productArray['width']);
-            $product->setLength($productArray['length']);
-        } 
+        $product = new $productArray['type'];
+        $product->setSize($productArray['size']);
+        $product->setWeight($productArray['weight']);
+        $product->setHeight($productArray['height']);
+        $product->setWidth($productArray['width']);
+        $product->setLength($productArray['length']);
         $product->setId($productArray['id']);
         $product->setName($productArray['name']);
         $product->setSku($productArray['sku']);

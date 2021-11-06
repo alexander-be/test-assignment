@@ -2,22 +2,22 @@
 require 'templates/header.php';
 require '../Private/init.php';
 require '../src/Database.php';
-require '../src/Product.php';
-$error = false;
-$errorType = false;
+require '../src/AbstractProduct.php';
+require '../src/Book.php';
+require '../src/Disc.php';
+require '../src/Furniture.php';
+
+$type = '';
+
 
 if ( isset( $_POST['add-product'] ) ) {
+    $type = ucfirst($_POST['type']);
     
-    if ( empty($_POST['sku']) || empty($_POST['name']) || empty($_POST['price'])) {
-        $error = true;
-    } elseif (empty($_POST['type'])) {
-        $errorType = true;
-    } else {
-    $product = new Product();
-    $product->setType($_POST['type']);
+    $product = new $type;
+    $product->setSku($_POST['sku']);
     $product->setName($_POST['name']);
     $product->setPrice($_POST['price']);
-    $product->setSku($_POST['sku']);
+    $product->setType($type);
     $product->setSize($_POST['size']);
     $product->setWeight($_POST['weight']);
     $product->setHeight($_POST['height']);
@@ -25,7 +25,6 @@ if ( isset( $_POST['add-product'] ) ) {
     $product->setLength($_POST['length']);
     header('Location:http://localhost:8888/SCANDIWEB/Public/');
     return (new Database())->addProduct($product);
-    }
 }
 
 ?>
@@ -37,7 +36,7 @@ if ( isset( $_POST['add-product'] ) ) {
         <a href="index.php"><button id="delete-btn">CANCEL</button></a>
     </div>
 </header>
-
+<!-- 
 <?php if ( $error ): ?>
     <div class="error">
         Please fill required fields.
@@ -48,7 +47,7 @@ if ( isset( $_POST['add-product'] ) ) {
     <div class="error">
         Please select type.
     </div>
-<?php endif; ?>
+<?php endif; ?> -->
 
 <form action="" method="post" id="product-form">
     <div class="product">

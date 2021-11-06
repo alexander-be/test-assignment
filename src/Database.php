@@ -2,7 +2,7 @@
 
 class Database
 {
-    public function addProduct(Product $product)
+    public function addProduct($product)
     {
         $database = mysqli_connect( DB_HOST,DB_USER,DB_PASSWORD,DB_DATABASE,DB_PORT );
 
