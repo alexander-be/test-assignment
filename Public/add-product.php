@@ -50,8 +50,8 @@ require 'templates/header.php';
 <header>
     <h2>Product List</h2>
     <div class="btn">
-        <input type="submit" name="add-product" form="product_form" value="SAVE">
-        <a href="index.php"><button id="delete-btn">CANCEL</button></a>
+        <input type="submit" name="add-product" form="product_form" value="Save">
+        <a href="index.php"><button id="delete-btn">Cancel</button></a>
     </div>
 </header>
 
