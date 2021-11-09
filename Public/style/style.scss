@@ -63,10 +63,10 @@ footer {
                 justify-content: space-between;
                 margin-bottom: 25px;
             }
-                &_disc.hidden, &_book.hidden, &_furniture.hidden{
+                &_DVD.hidden, &_Book.hidden, &_Furniture.hidden{
                     display: none;
                 }
-                    &_disc, &_book, &_furniture{
+                    &_DVD, &_Book, &_Furniture{
                         display: flex;
                         flex-flow: row wrap;
                         width: 270px;
@@ -74,7 +74,7 @@ footer {
                         margin: 40px 0 10px;
                     }
 
-    &_furniture input {
+    &_Furniture input {
         margin-bottom: 25px;
     }
 }

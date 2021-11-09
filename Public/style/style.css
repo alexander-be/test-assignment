@@ -57,16 +57,16 @@ footer {
   justify-content: space-between;
   margin-bottom: 25px;
 }
-.product_disc.hidden, .product_book.hidden, .product_furniture.hidden {
+.product_DVD.hidden, .product_Book.hidden, .product_Furniture.hidden {
   display: none;
 }
-.product_disc, .product_book, .product_furniture {
+.product_DVD, .product_Book, .product_Furniture {
   display: flex;
   flex-flow: row wrap;
   width: 270px;
   justify-content: space-between;
   margin: 40px 0 10px;
 }
-.product_furniture input {
+.product_Furniture input {
   margin-bottom: 25px;
 }/*# sourceMappingURL=style.css.map */

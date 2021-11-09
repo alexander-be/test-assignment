@@ -15,7 +15,7 @@ class Validation
 
     public function checkEmptyUniques($product)
     {
-        if ($product instanceof Disc && empty($_POST['size'])) {
+        if ($product instanceof DVD && empty($_POST['size'])) {
             return $this->errorUniques = true;
         } elseif ($product instanceof Book && empty($_POST['weight'])) {
             return $this->errorUniques = true;
@@ -28,7 +28,7 @@ class Validation
     {
         if (!is_numeric($_POST['price'])) {
             return $this->errorInt = true;
-        } elseif ($product instanceof Disc && !is_numeric($_POST['size'])) {
+        } elseif ($product instanceof DVD && !is_numeric($_POST['size'])) {
             return $this->errorInt = true;
         } elseif ($product instanceof Book && !is_numeric($_POST['weight'])) {
             return $this->errorInt = true;
@@ -41,7 +41,7 @@ class Validation
     {
         if ($this->error || $this->errorUniques) {
             return '<br><span id="error" style="color:red">Please make sure all fields are filled and type is selected.</span>';
-            unset($_POSTc);
+            unset($_POST);
         } elseif ($this->errorInt) {
             return '<br><span id="error" style="color:red">Please use the right data.</span>';
             unset($_POST);

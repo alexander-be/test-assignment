@@ -1,6 +1,6 @@
 <?php
 
-require 'Disc.php';
+require 'DVD.php';
 require 'Book.php';
 require 'Furniture.php';
 

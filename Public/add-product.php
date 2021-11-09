@@ -1,12 +1,13 @@
 <?php
-require 'templates/header.php';
+
 require '../Private/init.php';
 require '../src/Database.php';
 require '../src/AbstractProduct.php';
 require '../src/Book.php';
-require '../src/Disc.php';
+require '../src/DVD.php';
 require '../src/Furniture.php';
 require '../src/Validation.php';
+
 
 $type = '';
 $error = false;
@@ -17,7 +18,7 @@ if (isset($_POST['add-product'])) {
     if ($check->error) {
         $error = true;
     } else {
-        $type = ucfirst($_POST['type']);
+        $type = $_POST['type'];
         $product = new $type();
         $product->setSku($_POST['sku']);
         $product->setName($_POST['name']);
@@ -38,22 +39,23 @@ if (isset($_POST['add-product'])) {
     }
 
     if (!$error) {
-        header('Location:http://localhost/SCANDIWEB/Public/');
+        header('Location:' . SITE_URL);
         (new Database())->addProduct($product);
     }
 }
 
+require 'templates/header.php';
 ?>
 
 <header>
     <h2>Product List</h2>
     <div class="btn">
-        <input type="submit" name="add-product" form="product-form" value="SAVE">
+        <input type="submit" name="add-product" form="product_form" value="SAVE">
         <a href="index.php"><button id="delete-btn">CANCEL</button></a>
     </div>
 </header>
 
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="product-form">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="product_form">
     <?php if ($error) {
         echo $check->displayError();
     } ?>
@@ -76,25 +78,25 @@ if (isset($_POST['add-product'])) {
         <label for="type">Type switcher</label>
         <select name="type" id="productType" onchange="selectType()">
             <option value="">Select type</option>
-            <option value="disc">Disc</option>
-            <option value="book">Book</option>
-            <option value="furniture">Furniture</option>
+            <option value="DVD">Disc</option>
+            <option value="Book">Book</option>
+            <option value="Furniture">Furniture</option>
         </select>
     </div>
 
-    <div class="product_disc hidden">
+    <div class="product_DVD hidden">
         <label for="size">Size (MB)</label>
         <input type="text" name="size" id="size" value=""><br>
         <p><strong>Please provide capacity of the item in megabytes</strong></p>
     </div>
 
-    <div class="product_book hidden">
+    <div class="product_Book hidden">
         <label for="weight">Weight (KG)</label>
         <input type="text" name="weight" id="weight" value=""><br>
         <p><strong>Please provide weight of the item in kilograms</strong></p>
     </div>
 
-    <div class="product_furniture hidden">
+    <div class="product_Furniture hidden">
         <label for="height">Height (CM)</label>
         <input type="text" name="height" id="height" value="">
         <label for="width">Width (CM)</label>

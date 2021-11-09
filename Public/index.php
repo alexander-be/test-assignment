@@ -1,15 +1,14 @@
 <?php
 
 require '../Private/init.php';
-require 'templates/header.php';
 require '../src/ProductExtractor.php';
 
 $result = mysqli_query($database, "SELECT * FROM products");
 $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $products = [];
-$converter = new ProductExtractor();
+$extractor = new ProductExtractor();
 foreach ($result as $item) {
-    $products[] = $converter->create($item);
+    $products[] = $extractor->create($item);
 }
 
 if (isset($_POST['check'])) {
@@ -18,9 +17,11 @@ if (isset($_POST['check'])) {
         $deleteItems = "DELETE from products WHERE id=" . $checkedIdList;
         mysqli_query($database, $deleteItems);
     }
-    header('Location:http://localhost/SCANDIWEB/Public/');
+    header('Location:' . SITE_URL);
     exit();
 }
+
+require 'templates/header.php';
 ?>
 
 <header>
