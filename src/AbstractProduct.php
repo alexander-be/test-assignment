@@ -2,7 +2,6 @@
 
 abstract class AbstractProduct
 {
-
     private $id;
     private $name;
     private $sku;
@@ -31,7 +30,7 @@ abstract class AbstractProduct
 
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = htmlspecialchars($name);
     }
 
     public function getSku()
@@ -41,7 +40,7 @@ abstract class AbstractProduct
 
     public function setSku($sku)
     {
-        $this->sku = $sku;
+        $this->sku = htmlspecialchars($sku);
     }
 
     public function getPrice()
@@ -51,7 +50,7 @@ abstract class AbstractProduct
 
     public function setPrice($price)
     {
-        $this->price = $price;
+        $this->price = htmlspecialchars($price);
     }
 
     public function getType()
@@ -61,7 +60,7 @@ abstract class AbstractProduct
 
     public function setType($type)
     {
-        $this->type = $type;
+        $this->type = htmlspecialchars($type);
     }
 
     public function getSize()
@@ -72,7 +71,7 @@ abstract class AbstractProduct
     public function setSize($size)
     {
         if (!empty($size)) {
-            $this->size = $size;
+            $this->size = htmlspecialchars($size);
         }
     }
 
@@ -84,7 +83,7 @@ abstract class AbstractProduct
     public function setWeight($weight)
     {
         if (!empty($weight)) {
-            $this->weight = $weight;
+            $this->weight = htmlspecialchars($weight);
         }
     }
 
@@ -96,7 +95,7 @@ abstract class AbstractProduct
     public function setHeight($height)
     {
         if (!empty($height)) {
-            $this->height = $height;
+            $this->height = htmlspecialchars($height);
         }
     }
 
@@ -108,7 +107,7 @@ abstract class AbstractProduct
     public function setWidth($width)
     {
         if (!empty($width)) {
-            $this->width = $width;
+            $this->width = htmlspecialchars($width);
         }
     }
 
@@ -120,7 +119,7 @@ abstract class AbstractProduct
     public function setLength($length)
     {
         if (!empty($length)) {
-            $this->length = $length;
+            $this->length = htmlspecialchars($length);
         }
     }
 }

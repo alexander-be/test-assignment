@@ -6,25 +6,41 @@ require '../src/AbstractProduct.php';
 require '../src/Book.php';
 require '../src/Disc.php';
 require '../src/Furniture.php';
+require '../src/Validation.php';
 
 $type = '';
+$error = false;
 
+if (isset($_POST['add-product'])) {
+    $check = new Validation();
+    $check->checkEmpty();
+    if ($check->error) {
+        $error = true;
+    } else {
+        $type = ucfirst($_POST['type']);
+        $product = new $type();
+        $product->setSku($_POST['sku']);
+        $product->setName($_POST['name']);
+        $product->setPrice($_POST['price']);
+        $product->setType($type);
+        $product->setSize($_POST['size']);
+        $product->setWeight($_POST['weight']);
+        $product->setHeight($_POST['height']);
+        $product->setWidth($_POST['width']);
+        $product->setLength($_POST['length']);
+        $check->checkEmptyUniques($product);
+        $check->checkIntegers($product);
+        if ($check->errorUniques) {
+            $error = true;
+        } elseif ($check->errorInt) {
+            $error = true;
+        }
+    }
 
-if ( isset( $_POST['add-product'] ) ) {
-    $type = ucfirst($_POST['type']);
-    
-    $product = new $type;
-    $product->setSku($_POST['sku']);
-    $product->setName($_POST['name']);
-    $product->setPrice($_POST['price']);
-    $product->setType($type);
-    $product->setSize($_POST['size']);
-    $product->setWeight($_POST['weight']);
-    $product->setHeight($_POST['height']);
-    $product->setWidth($_POST['width']);
-    $product->setLength($_POST['length']);
-    header('Location:http://localhost:8888/SCANDIWEB/Public/');
-    return (new Database())->addProduct($product);
+    if (!$error) {
+        header('Location:http://localhost/SCANDIWEB/Public/');
+        (new Database())->addProduct($product);
+    }
 }
 
 ?>
@@ -36,26 +52,18 @@ if ( isset( $_POST['add-product'] ) ) {
         <a href="index.php"><button id="delete-btn">CANCEL</button></a>
     </div>
 </header>
-<!-- 
-<?php if ( $error ): ?>
-    <div class="error">
-        Please fill required fields.
-    </div>
-<?php endif; ?>
 
-<?php if ( $errorType ): ?>
-    <div class="error">
-        Please select type.
-    </div>
-<?php endif; ?> -->
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="product-form">
+    <?php if ($error) {
+        echo $check->displayError();
+    } ?>
 
-<form action="" method="post" id="product-form">
     <div class="product">
         <span>
             <label for="sku">SKU</label>
             <input type="text" name="sku" id="sku" value="">
         </span>
-        <span>   
+        <span>
             <label for="name">Name</label>
             <input type="text" name="name" id="name" value="">
         </span>

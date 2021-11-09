@@ -1,28 +1,27 @@
-<?php 
-    
-    require '../Private/init.php';
-    require 'templates/header.php';
-    require '../src/ProductExtractor.php';
+<?php
 
-    $result = mysqli_query( $database, "SELECT * FROM products" );
-    $result = mysqli_fetch_all( $result, MYSQLI_ASSOC );
-    $products = [];
-    $converter = new ProductExtractor();
-    foreach ($result as $item) {
-        $products[] = $converter->create($item);
-    }
+require '../Private/init.php';
+require 'templates/header.php';
+require '../src/ProductExtractor.php';
 
-    if( isset( $_POST['check'] ) ){
-        $checkedItems = $_POST['check'];
-            foreach ( $checkedItems as $checkedIdList ){
-                $deleteItems = "DELETE from products WHERE id=".$checkedIdList;
-                mysqli_query( $database,$deleteItems );
-            }
-            header('Location:http://localhost:8888/SCANDIWEB/Public/');
-            exit();
-            
+$result = mysqli_query($database, "SELECT * FROM products");
+$result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$products = [];
+$converter = new ProductExtractor();
+foreach ($result as $item) {
+    $products[] = $converter->create($item);
+}
+
+if (isset($_POST['check'])) {
+    $checkedItems = $_POST['check'];
+    foreach ($checkedItems as $checkedIdList) {
+        $deleteItems = "DELETE from products WHERE id=" . $checkedIdList;
+        mysqli_query($database, $deleteItems);
     }
-?> 
+    header('Location:http://localhost/SCANDIWEB/Public/');
+    exit();
+}
+?>
 
 <header>
     <h2>Product List</h2>
@@ -34,7 +33,7 @@
 
 <form action="" method="post" id="form">
     <ul class="product_list">
-        <?php foreach ( $products as $product ) : ?>
+        <?php foreach ($products as $product) : ?>
             <li class="product_item" id="product_item">
                 <input type="checkbox" name="check[]" class="delete-checkbox" value="<?php echo $product->getId(); ?>">
                 <div class="product_item_content">
@@ -46,5 +45,5 @@
             </li>
         <?php endforeach; ?>
     </ul>
-</form>    
-    <?php require 'templates/footer.php';?>
+</form>
+<?php require 'templates/footer.php'; ?>
